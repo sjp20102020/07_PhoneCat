@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" ng-app="phonecatApp" ng-controller="PhoneListCtrl">
+<head>
+  <meta charset="utf-8">
+  <title>Google Phone Gallery: {{sjpQuery}} </title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+
+    <script src="js/controllers.js"></script>
+    <script src="js/app.js"></script>
+
+</head>
+<body>
+
+Search <input type="text" ng-model="sjpQuery"  />
+order
+<select ng-model="sjpOrder">
+    <option value="name">Alplabetical</option>
+    <option value="age">Newest</option>
+</select>
+<ul class="phones">
+    <li ng-repeat="phone in phones | filter:sjpQuery |orderBy:sjpOrder" class="thumbnail">
+        <a ng-href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}"/></a>
+        <a ng-href="#/phones/{{phone.id}}">{{phone.name}}</a>
+        <p>{{phone.snippet}}</p>
+    </li>
+</ul>
+
+{{sjpQuery}}
+
+
+
+
+<!--
+<table class="table table-bordered">
+    <tr ng-repeat="i in [0,1,2,3,4,5,6,7,8,9]"><td ng-repeat="x in [0,1,2,3,4,5,6,7,8,9]">{{i}},{{x}}</td></tr>
+</table>
+-->
+
+
+
+
+</body>
+</html>
